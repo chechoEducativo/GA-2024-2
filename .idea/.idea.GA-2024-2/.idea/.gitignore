@@ -1,3 +1,5 @@
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ﻿# Default ignored files
 /shelf/
 /workspace.xml
@@ -6,6 +8,21 @@
 /contentModel.xml
 /projectSettingsUpdater.xml
 /.idea.GA-2024-2.iml
+=======
+=======
+>>>>>>> Stashed changes
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/.idea.GA-2024-2.iml
+/modules.xml
+/contentModel.xml
+/projectSettingsUpdater.xml
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files
