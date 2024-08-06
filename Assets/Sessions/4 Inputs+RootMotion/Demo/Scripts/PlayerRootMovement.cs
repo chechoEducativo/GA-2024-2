@@ -5,31 +5,70 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using CallbackContext = UnityEngine.InputSystem.InputAction.CallbackContext;
 
-[RequireComponent(typeof(PlayerInput))]
-public class PlayerRootMovement : MonoBehaviour
+
+namespace Demo.RootMotionController
 {
-	[SerializeField] private Animator anim;
-
-	[SerializeField] private Vector2 vec;
-	[SerializeField] private Vector2Dampener motionVector;
-	private int speedXId;
-	private int speedYId;
-
-	private void Awake()
+	[RequireComponent(typeof(PlayerCameraManager))]
+	[RequireComponent(typeof(PlayerInput))]
+	public class PlayerRootMovement : MonoBehaviour
 	{
-		speedXId = Animator.StringToHash("VelX");
-		speedYId = Animator.StringToHash("VelY");
-	}
+		[SerializeField] private Animator anim;
+		[SerializeField] private Vector2Dampener motionVector = new Vector2Dampener(0.3f);
+		private int speedXId;
+		private int speedYId;
 
-	public void Move(CallbackContext ctx)
-	{
-		motionVector.Target = ctx.ReadValue<Vector2>();
-    }
+		private PlayerCameraManager cameraManager;
 
-	private void Update()
-	{
-		motionVector.Update();
-		anim.SetFloat(speedXId,motionVector.Value.x);
-		anim.SetFloat(speedYId, motionVector.Value.y);
+		internal Vector3 targetForward;
+
+		public PlayerCameraManager CameraManager
+		{
+			get
+			{
+				cameraManager ??= GetComponent<PlayerCameraManager>();
+				return cameraManager;
+			}
+		}
+
+		private void Awake()
+		{
+			speedXId = Animator.StringToHash("VelX");
+			speedYId = Animator.StringToHash("VelY");
+		}
+
+		public void Move(CallbackContext ctx)
+		{
+			motionVector.Target = ctx.ReadValue<Vector2>();
+		}
+
+		public void ToggleSprint(CallbackContext ctx)
+		{
+			motionVector.Clamp = !ctx.ReadValueAsButton();
+		}
+
+		private void Update()
+		{
+			motionVector.Update();
+			anim.SetFloat(speedXId, motionVector.Value.x);
+			anim.SetFloat(speedYId, motionVector.Value.y);
+		}
+
+		private void OnAnimatorMove()
+		{
+			Transform cameraTransform = CameraManager.Cam.transform;
+			Vector3 normal = transform.up;
+			float upThreshold = Mathf.Abs(Vector3.Dot(cameraTransform.forward, normal));
+			Vector3 forward = Vector3.Lerp(cameraTransform.forward, cameraTransform.up, upThreshold);
+			targetForward = Vector3.ProjectOnPlane(forward, normal);
+			Quaternion rot = Quaternion.LookRotation(forward, normal);
+			float interpolator = MathUtils.ShaderLikeSmoothstep(0, 0.6f, motionVector.Value.magnitude);
+			anim.rootRotation = Quaternion.Slerp(anim.rootRotation, rot,
+				Time.deltaTime * 10f * interpolator);
+			anim.ApplyBuiltinRootMotion();
+			#if UNITY_EDITOR			
+			Debug.DrawLine(transform.position, transform.position + targetForward, Color.cyan, 0.03334f);
+			Debug.DrawLine(transform.position, transform.position + transform.forward * interpolator, Color.red, 0.03334f);
+			#endif
+		}
 	}
 }
