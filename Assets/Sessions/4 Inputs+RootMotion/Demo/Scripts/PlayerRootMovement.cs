@@ -56,14 +56,13 @@ namespace Demo.RootMotionController
 		private void OnAnimatorMove()
 		{
 			Transform cameraTransform = CameraManager.Cam.transform;
-			Vector3 normal = transform.up;
+			Vector3 normal = Vector3.up;
 			float upThreshold = Mathf.Abs(Vector3.Dot(cameraTransform.forward, normal));
-			Vector3 forward = Vector3.Lerp(cameraTransform.forward, cameraTransform.up, upThreshold);
+			Vector3 forward = Vector3.Lerp(cameraTransform.forward, cameraTransform.up, upThreshold).normalized;
 			targetForward = Vector3.ProjectOnPlane(forward, normal);
-			Quaternion rot = Quaternion.LookRotation(forward, normal);
+			Quaternion rot = Quaternion.LookRotation(targetForward, Vector3.up);
 			float interpolator = MathUtils.ShaderLikeSmoothstep(0, 0.6f, motionVector.Value.magnitude);
-			anim.rootRotation = Quaternion.Slerp(anim.rootRotation, rot,
-				Time.deltaTime * 10f * interpolator);
+			anim.rootRotation = Quaternion.Slerp(anim.rootRotation, rot, Time.deltaTime * 10f * interpolator);
 			anim.ApplyBuiltinRootMotion();
 			#if UNITY_EDITOR			
 			Debug.DrawLine(transform.position, transform.position + targetForward, Color.cyan, 0.03334f);
