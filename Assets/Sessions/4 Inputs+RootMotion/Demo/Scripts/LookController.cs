@@ -15,7 +15,7 @@ public class LookController : MonoBehaviour
     
     public void Look(InputAction.CallbackContext ctx)
     {
-        lookVector.Target = (ctx.ReadValue<Vector2>() /new Vector2(Screen.width, Screen.height)) * 180f;
+        lookVector.Target = (ctx.ReadValue<Vector2>() / new Vector2(Screen.width, Screen.height)) * 180f;
     }
 
     private void Update()
