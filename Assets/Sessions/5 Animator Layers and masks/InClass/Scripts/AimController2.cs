@@ -7,30 +7,26 @@ public class AimController2 : MonoBehaviour
 {
     [SerializeField] private AimConstraint chestAim;
     [SerializeField] private Transform aimRig;
-    [SerializeField] private VectorDampener lookVector;
-    
+    [SerializeField] private Transform camTransform;
+    [SerializeField] private Animator anim;
+
+    private bool aiming;
     public void Aim(InputAction.CallbackContext ctx)
     {
         bool val = ctx.ReadValueAsButton();
-        // Activar o desactivar el constraint de apuntado del pecho
+        aiming = val;
         chestAim.enabled = val;
-        // Desencadenar la activacion de la camara de apuntado
         aimRig.gameObject.SetActive(val);
-    }
-
-    public void Look(InputAction.CallbackContext ctx)
-    {
-        lookVector.TargetValue = ctx.ReadValue<Vector2>();
-    }
-
-    private void Update()
-    {
-        lookVector.Update();
-        aimRig.RotateAround(aimRig.position, transform.up, lookVector.CurrentValue.x);
+        anim.SetBool("Aim", val);
     }
 
     private void Awake()
     {
         aimRig.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(aiming) transform.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(camTransform.forward, transform.up).normalized);
     }
 }

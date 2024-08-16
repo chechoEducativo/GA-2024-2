@@ -1450,14 +1450,14 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 11400000, guid: e9d8634a26bc19f47b099f7d872a2173, type: 2}
+  m_CustomBlends: {fileID: 0}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2435,11 +2435,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6842629351975876535, guid: bc3772d7d10e8a4419f82302ba261ba1,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1157994002}
     - target: {fileID: 8831117780802157094, guid: bc3772d7d10e8a4419f82302ba261ba1,
         type: 3}
       propertyPath: m_Name

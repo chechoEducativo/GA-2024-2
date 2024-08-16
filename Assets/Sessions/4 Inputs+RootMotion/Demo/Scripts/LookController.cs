@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-
+#pragma warning disable CS0108
 public class LookController : MonoBehaviour
 {
     [SerializeField] private Transform camera;
@@ -21,6 +21,7 @@ public class LookController : MonoBehaviour
     private void Update()
     {
         lookVector.Update();
+        
         camera.RotateAround(transform.position, transform.up, lookVector.Value.x);
     }
 }
