@@ -7,6 +7,12 @@ using UnityEngine.InputSystem;
 
 public class AimController : MonoBehaviour
 {
+    [Serializable]
+    public class AimEvent : UnityEvent<bool>
+    {
+        
+    }
+    
     [Serializable] public class AimToggleEvent : UnityEvent<bool> { }
 
     [SerializeField] private Animator anim;
@@ -14,13 +20,17 @@ public class AimController : MonoBehaviour
     [SerializeField] private Transform cameraRotator;
     [SerializeField] private MultiAimConstraint aimTorso;
 
-    [SerializeField]private Vector2Dampener lookVector;
+    [SerializeField] private Vector2Dampener lookVector;
+
+    public AimEvent onAim;
+    
     private float yrotation;
     private bool aiming;
 
     private void ToggleAim(bool val)
     {
         aimCamera.SetActive(val);
+        onAim?.Invoke(val);
     }
     
     public void Aim(InputAction.CallbackContext ctx)
