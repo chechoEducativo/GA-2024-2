@@ -247,6 +247,143 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 948433503}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &429646673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c75df2ae1c5485842840724069a7a54b,
+    type: 3}
+  m_PrefabInstance: {fileID: 948433503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &429646674 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c75df2ae1c5485842840724069a7a54b,
+    type: 3}
+  m_PrefabInstance: {fileID: 948433503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &429646676
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429646673}
+  serializedVersion: 4
+  m_Mass: 45
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!136 &429646677
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429646673}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.23429695
+  m_Height: 1.780265
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9344761, z: 0}
+--- !u!114 &429646678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429646673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: fadf958a1cb671d4fa98abe68a53c382,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 429646679}
+        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+        m_MethodName: LightAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a10161b7-7336-42f6-8da0-e9b2c0985f66
+    m_ActionName: Combat/LightAttack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 429646679}
+        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+        m_MethodName: HeavyAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 28868460-cf0d-4bd8-abaa-91949dc07d5c
+    m_ActionName: Combat/HeavyAttack[/Mouse/rightButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Combat
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &429646679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429646673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91b12ec798d8e54aa8ec77afcf96285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &948433503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -315,10 +452,35 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ac7a5377aa73f224ab2a63cd9b468ce8, type: 2}
+    - target: {fileID: 5866666021909216657, guid: c75df2ae1c5485842840724069a7a54b,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: c75df2ae1c5485842840724069a7a54b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1157994003}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c75df2ae1c5485842840724069a7a54b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 429646677}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c75df2ae1c5485842840724069a7a54b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 429646676}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c75df2ae1c5485842840724069a7a54b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 429646678}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c75df2ae1c5485842840724069a7a54b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 429646679}
   m_SourcePrefab: {fileID: 100100000, guid: c75df2ae1c5485842840724069a7a54b, type: 3}
 --- !u!1001 &1023368897
 PrefabInstance:
@@ -505,7 +667,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 429646674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1157994004
 MonoBehaviour:
@@ -661,7 +823,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1157994003}
   - {fileID: 46952710}
   - {fileID: 1207324419}
   - {fileID: 948433503}
