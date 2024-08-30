@@ -40,8 +40,6 @@ flowchart TB
             click gameMode callback "Defines the game at its core concepts, like rules or mechanics (server only)"
             click gameState callback "Holds global information about the game such as How many sidequests have been completed or a list of the connected players"
             click playerState callback "Holds specific data for each player such as their score, their health"
-            
-            
     end
     
     
