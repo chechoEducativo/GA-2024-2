@@ -367,6 +367,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 28868460-cf0d-4bd8-abaa-91949dc07d5c
     m_ActionName: Combat/HeavyAttack[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6a29817b-49e1-46a2-9244-42e5d9b18848
+    m_ActionName: Combat/Hey[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Combat
@@ -384,6 +388,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b12ec798d8e54aa8ec77afcf96285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &429646680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429646673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745d9e312b4aa534189d78138fb71229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 1000
+  staminaRegen: 10
+  stamina: 0
 --- !u!1001 &948433503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,6 +500,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 429646679}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c75df2ae1c5485842840724069a7a54b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 429646680}
   m_SourcePrefab: {fileID: 100100000, guid: c75df2ae1c5485842840724069a7a54b, type: 3}
 --- !u!1001 &1023368897
 PrefabInstance:

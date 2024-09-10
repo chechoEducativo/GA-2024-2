@@ -531,7 +531,57 @@ ModelImporter:
           preInfinity: 3
           postInfinity: 3
           rotationOrder: 4
-      events: []
+      - name: ChargeThreshold
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1.0048523
+            inSlope: -14.846738
+            outSlope: -14.846738
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.085276976
+          - serializedVersion: 3
+            time: 0.17948717
+            value: 0.1
+            inSlope: 0
+            outSlope: 13.800066
+            tangentMode: 1
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.18771124
+          - serializedVersion: 3
+            time: 0.32692307
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          preInfinity: 3
+          postInfinity: 3
+          rotationOrder: 4
+      events:
+      - time: 0.1824147
+        functionName: UpdateStamina
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: -60
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1

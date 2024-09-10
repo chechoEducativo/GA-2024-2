@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,8 +13,10 @@ public class Attack : MonoBehaviour
     
     public void LightAttack(InputAction.CallbackContext ctx)
     {
+        if (!gameObject.scene.IsValid()) return;
         if (!ctx.ReadValueAsButton()) return;
-       // if (AttackActive()) return;
+        if (AttackActive()) return;
+        if(!GetComponent<CharacterState>().UpdateStamina(-20)) return;
         anim.SetTrigger("Attack");
         anim.SetBool("HeavyAttack", false);
     }
@@ -25,6 +24,9 @@ public class Attack : MonoBehaviour
     public void HeavyAttack(InputAction.CallbackContext ctx)
     {
         bool clicked = ctx.ReadValueAsButton();
+        if(AttackActive()) return;
+        CharacterState state = GetComponent<CharacterState>();
+        if(state.Stamina < -40) return;
         if (clicked)
         {
             anim.SetTrigger("Attack");
@@ -34,6 +36,7 @@ public class Attack : MonoBehaviour
         else
         {
             anim.SetFloat("Charging", 0);
+            //state.UpdateStamina(-40);
         }
     }
 
