@@ -8,12 +8,15 @@ public class CharacterState : MonoBehaviour
     //Estas variables iniciales deberian ser parte de un sistema de progresion
     [SerializeField] private float maxStamina = 100f;
     [SerializeField] private float staminaRegen = 10f;
+    [SerializeField] private float maxHealth = 100f;
 
     [SerializeField] private float stamina;
+    private float currentHealth;
 
     private void Awake()
     {
         stamina = maxStamina;
+        currentHealth = maxHealth;
     }
 
     private void Update()
@@ -30,6 +33,18 @@ public class CharacterState : MonoBehaviour
             return true;
         }
         
+        return false;
+    }
+
+    public bool UpdateHealth(float healthDelta)
+    {
+        if (currentHealth >= healthDelta)
+        {
+            currentHealth += healthDelta;
+            return true;
+        }
+        //Morir
+        Debug.Log($"Character ({gameObject.name} is dead");
         return false;
     }
 
