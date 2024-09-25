@@ -14,7 +14,7 @@ public class DamageVolume : MonoBehaviour, IDamageSender
 
     public void SendDamage(IDamageReceiver target)
     {
-        target.ReceiveDamage(this, new DamagePayload{damage = -damageAmount, severity = severity});
+        target.ReceiveDamage(this, new DamagePayload{damage = -damageAmount, severity = severity, position = transform.position});
     }
 
     public int Faction => 1;

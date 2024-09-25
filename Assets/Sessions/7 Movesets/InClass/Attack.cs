@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class Attack : MonoBehaviour
 {
     private Animator anim;
+    [SerializeField] private WeaponDamager weaponDamager;
 
     private bool AttackActive()
     {
@@ -43,5 +44,10 @@ public class Attack : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+    }
+
+    public void ToggleDamageDetector(float motionValue)
+    {
+        weaponDamager.Toggle(motionValue);
     }
 }

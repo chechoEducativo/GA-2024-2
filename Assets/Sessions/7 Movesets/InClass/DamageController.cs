@@ -19,7 +19,7 @@ public class DamageController : MonoBehaviour, IDamageReceiver
         Vector3 damageDirection = transform.InverseTransformPoint(payload.position).normalized;
         if (isAlive)
         {
-            if (Mathf.Abs(damageDirection.x) >= Mathf.Abs(damageDirection.y))
+            if (Mathf.Abs(damageDirection.x) >= Mathf.Abs(damageDirection.z))
             {
                 anim.SetFloat("DamageX", damageDirection.x * (float)payload.severity);
                 anim.SetFloat("DamageY", 0);

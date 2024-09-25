@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hey",
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "11573e96-df8f-4c93-948b-d4d21f9374a5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Dodge",
                     "type": "Button",
-                    "id": "6a29817b-49e1-46a2-9244-42e5d9b18848",
+                    "id": "1e03baae-2386-44fd-a2a1-364826d06248",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -57,13 +66,68 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "WASD",
+                    "id": "1be864ac-435b-4975-bdfc-e68e539a06eb",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "5660b2bc-cd81-4493-8eb2-d8923f553aca",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "784de4f4-78bf-4baa-9367-83204537e5ca",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "3dcf980a-049f-43c0-8669-2add64b9d8ae",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "d32a0ca8-5dad-4756-8d4f-202a902f354b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
-                    "id": "7a7ebdf1-43fe-4660-b025-77c4667d8566",
+                    "id": "bbc8efad-2af5-4942-a919-0d30ebba3eef",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hey",
+                    "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
