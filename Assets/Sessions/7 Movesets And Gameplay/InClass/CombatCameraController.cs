@@ -2,15 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using InClass;
 using UnityEngine;
 
 public class CombatCameraController : GameSystem
 {
-    [SerializeField] private LayerMask detectionMask;
-    [SerializeField] private float detectionRadius;
+    [SerializeField] private Character character;
     private CombatVirtualCamera vCam;
-
-    private Transform currentTarget;
 
     protected override void Awake()
     {
@@ -20,13 +18,16 @@ public class CombatCameraController : GameSystem
 
     public void ToggleLock()
     {
-        if (currentTarget != null)
+        CharacterState state = character.State;
+        if (state.IsLocked)
         {
-            currentTarget = null;
-            vCam.LockTarget(currentTarget);
+            state.LockedTarget = null;
+            vCam.LockTarget(null);
             return;
         }
-        Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectionRadius, detectionMask);
+        
+        //Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectionRadius, detectionMask);
+        Collider[] detectedColliders = Physics.OverlapSphere(transform.position, 5, 0);
         if (detectedColliders.Length == 0) return;
         int bestFocusedTarget = 0;
         for (int i = 0; i < detectedColliders.Length; i++)
@@ -35,15 +36,15 @@ public class CombatCameraController : GameSystem
             float currentBestScore = vCam.GetFocusScore(detectedColliders[bestFocusedTarget].transform);
             if (1 - focusScore < 1 - currentBestScore) bestFocusedTarget = i;
         }
-
-        currentTarget = detectedColliders[bestFocusedTarget].transform;
-        vCam.LockTarget(currentTarget);
+        state.LockedTarget = detectedColliders[bestFocusedTarget].transform;
+        vCam.LockTarget(state.LockedTarget);
     }
 
     private void Update()
     {
-        if (currentTarget == null) return;
-        Vector3 forward = (Vector3.ProjectOnPlane(currentTarget.position, Vector3.up) - transform.position).normalized;
+        CharacterState state = character.State;
+        if (!state.IsLocked) return;
+        Vector3 forward = (Vector3.ProjectOnPlane(state.LockedTarget.position, Vector3.up) - transform.position).normalized;
         Quaternion lookRot = Quaternion.LookRotation(forward, Vector3.up);
         transform.rotation = lookRot;
     }

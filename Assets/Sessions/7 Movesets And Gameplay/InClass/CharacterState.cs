@@ -12,6 +12,7 @@ public class CharacterState : MonoBehaviour
 
     [SerializeField] private float stamina;
     private float currentHealth;
+    private Transform lockedTarget;
 
     private void Awake()
     {
@@ -49,4 +50,12 @@ public class CharacterState : MonoBehaviour
     }
 
     public float Stamina => stamina;
+
+    public Transform LockedTarget
+    {
+        get => lockedTarget;
+        set => lockedTarget = value;
+    }
+
+    public bool IsLocked => lockedTarget != null;
 }

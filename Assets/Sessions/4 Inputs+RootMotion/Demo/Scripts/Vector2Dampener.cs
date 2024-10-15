@@ -29,6 +29,7 @@ public struct Vector2Dampener
     public Vector2 Value => value;
     public Vector2 Target
     {
+        get => target;
         set => target = value;
     }
     public bool Clamp
