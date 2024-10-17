@@ -19,24 +19,11 @@ public class CombatCameraController : GameSystem
     public void ToggleLock()
     {
         CharacterState state = character.State;
-        if (state.IsLocked)
+        if (!state.IsLocked)
         {
-            state.LockedTarget = null;
             vCam.LockTarget(null);
             return;
         }
-        
-        //Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectionRadius, detectionMask);
-        Collider[] detectedColliders = Physics.OverlapSphere(transform.position, 5, 0);
-        if (detectedColliders.Length == 0) return;
-        int bestFocusedTarget = 0;
-        for (int i = 0; i < detectedColliders.Length; i++)
-        {
-            float focusScore = vCam.GetFocusScore(detectedColliders[i].transform);
-            float currentBestScore = vCam.GetFocusScore(detectedColliders[bestFocusedTarget].transform);
-            if (1 - focusScore < 1 - currentBestScore) bestFocusedTarget = i;
-        }
-        state.LockedTarget = detectedColliders[bestFocusedTarget].transform;
         vCam.LockTarget(state.LockedTarget);
     }
 
@@ -48,13 +35,4 @@ public class CombatCameraController : GameSystem
         Quaternion lookRot = Quaternion.LookRotation(forward, Vector3.up);
         transform.rotation = lookRot;
     }
-
-
-#if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    }
-#endif
 }

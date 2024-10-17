@@ -59,7 +59,7 @@ namespace InClass
             Transform cameraTransform = character.Player.CameraManager.Camera.transform;
             Vector3 cameraForward = Vector3.Lerp(cameraTransform.forward, cameraTransform.up,
                 Vector3.Dot(transform.up, cameraTransform.forward)).normalized;
-            cameraForward = Vector3.ProjectOnPlane(cameraForward, transform.up).normalized;
+            cameraForward = Vector3.ProjectOnPlane(cameraForward, Vector3.up).normalized;
             motionVector = cameraForward * motionVectorDampener.Value.y +
                            cameraTransform.right * motionVectorDampener.Value.x;
             if (!animator.GetBool("Dodging"))

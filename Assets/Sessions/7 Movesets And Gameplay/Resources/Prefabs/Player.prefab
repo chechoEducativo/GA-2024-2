@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438347121237857815}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04597002, y: -0.02352261, z: 0.0010827803, w: 0.9986653}
-  m_LocalPosition: {x: 0, y: 1.79, z: -2.69}
+  m_LocalRotation: {x: -0, y: -0.11767493, z: -0, w: 0.9930522}
+  m_LocalPosition: {x: 0.62869257, y: 1.79, z: -2.6155012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 0.33
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []

@@ -1,5 +1,6 @@
 using InClass;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Animator))]
@@ -10,6 +11,9 @@ public class CombatController : MonoBehaviour
     [SerializeField] private WeaponDamager weaponDamager;
     [SerializeField] private LayerMask detectionMask;
     [SerializeField] private float detectionRadius;
+
+    public UnityEvent onLockTarget;
+    public UnityEvent onUnlockTarget;
 
     private bool AttackActive()
     {
@@ -49,6 +53,12 @@ public class CombatController : MonoBehaviour
     {
         if (!gameObject.scene.IsValid()) return;
         if (!ctx.performed) return;
+        if (character.State.IsLocked)
+        {
+            character.State.LockedTarget = null;
+            onUnlockTarget?.Invoke();
+            return;
+        }
         Collider[] detectedColliders = Physics.OverlapSphere(transform.position, detectionRadius, detectionMask);
         if (detectedColliders.Length == 0) return;
         int bestFocusedTarget = 0;
@@ -60,6 +70,7 @@ public class CombatController : MonoBehaviour
             if (1 - focusScore < 1 - currentBestScore) bestFocusedTarget = i;
         }
         character.State.LockedTarget = detectedColliders[bestFocusedTarget].transform;
+        onLockTarget?.Invoke();
     }
 
     private void Awake()
