@@ -155,7 +155,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -277,7 +277,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -491,7 +491,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -587,19 +587,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1248612248}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &806145185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806145184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb1cdf18e53f1f4a91b9d6d6e134029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1928615083}
 --- !u!195 &806145186
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -637,6 +624,36 @@ MonoBehaviour:
   smoothMotionVector:
     time: 0.2
     clampMagnitude: 0
+--- !u!114 &806145192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806145184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de8391c0839b004b99523b453a18cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  context:
+    searchRadius: 10.01
+    searchDelaySecondsMin: 1
+    searchDelaySecondsMax: 3
+    currentSearchDelaySeconds: 0
+    searchTimer: 0
+    agent: {fileID: 0}
+    enemy: {fileID: 0}
+    animator: {fileID: 0}
+    attackDelayMin: 1
+    attackDelayMax: 3
+    currentAttackDelay: 0
+    attackTimer: 0
+  currentState: 0
+  enemyDetectionRadius: 15.03
+  enemyDetectionMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &842314159
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +686,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -1174,11 +1191,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ff63d57522ef5248b488cc0d093e529,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 806145185}
+      addedObject: {fileID: 806145189}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2ff63d57522ef5248b488cc0d093e529,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 806145189}
+      addedObject: {fileID: 806145192}
   m_SourcePrefab: {fileID: 100100000, guid: 2ff63d57522ef5248b488cc0d093e529, type: 3}
 --- !u!1 &1352125746
 GameObject:
@@ -1417,7 +1434,7 @@ GameObject:
   - component: {fileID: 1928615082}
   - component: {fileID: 1928615081}
   - component: {fileID: 1928615080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FollowTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
